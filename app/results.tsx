@@ -57,9 +57,17 @@ const ResultsScreen = () => {
 
   if (filteredResults.length === 0) {
     return (
-      <View style={styles.container}>
-        <Text style={styles.errorText}>Hiç eşleşme bulunamadı! Belki tekrar denemek istersiniz?</Text>
-      </View>
+      <LinearGradient colors={["#1E1E1E", "#121212"]} style={styles.container}>
+        <View style={styles.noResultsContainer}>
+          <Text style={styles.errorText}>Hiç eşleşme bulunamadı! Belki de sorulara verdiğin cevapları gözden geçirmek istersin.</Text>
+          <Pressable
+            style={styles.button}
+            onPress={() => router.replace("/quiz")}
+          >
+            <Text style={styles.buttonText}>Tekrar Dene</Text>
+          </Pressable>
+        </View>
+      </LinearGradient>
     );
   }
 
@@ -167,9 +175,18 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
   },
+  noResultsContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 20,
+  },
   errorText: {
     fontSize: 18,
-    color: "red",
+    color: "#FF6B6B", // Slightly softer red for error
+    textAlign: 'center',
+    marginBottom: 20,
+    lineHeight: 25,
   },
 });
 
