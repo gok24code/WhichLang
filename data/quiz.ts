@@ -30,6 +30,7 @@ export const LANGUAGES: Language[] = [
       system: 1,
       embedded: 2,
       enterprise: 3,
+      community: 5,
     },
   },
   {
@@ -48,6 +49,7 @@ export const LANGUAGES: Language[] = [
       system: 1,
       embedded: 2,
       enterprise: 4,
+      community: 5,
     },
   },
   {
@@ -66,6 +68,7 @@ export const LANGUAGES: Language[] = [
       system: 1,
       embedded: 2,
       enterprise: 5,
+      community: 4,
     },
   },
   {
@@ -84,6 +87,7 @@ export const LANGUAGES: Language[] = [
       system: 2,
       embedded: 3,
       enterprise: 5,
+      community: 5,
     },
   },
   {
@@ -102,6 +106,7 @@ export const LANGUAGES: Language[] = [
       system: 3,
       embedded: 3,
       enterprise: 5,
+      community: 4,
     },
   },
   {
@@ -120,6 +125,7 @@ export const LANGUAGES: Language[] = [
       system: 4,
       embedded: 2,
       enterprise: 4,
+      community: 3,
     },
   },
   {
@@ -138,6 +144,7 @@ export const LANGUAGES: Language[] = [
       system: 5,
       embedded: 5,
       enterprise: 3,
+      community: 4,
     },
   },
   {
@@ -156,6 +163,7 @@ export const LANGUAGES: Language[] = [
       system: 5,
       embedded: 5,
       enterprise: 4,
+      community: 5,
     },
   },
 ];
@@ -221,6 +229,36 @@ export const QUESTIONS: Question[] = [
     trait: 'enterprise',
     iconName: 'office-building',
   },
+  {
+    id: 11,
+    text: 'Güçlü bir topluluk desteği ve bol öğrenme kaynağı sizin için önemli mi?',
+    trait: 'community',
+    iconName: 'account-group',
+  },
+    {
+    id: 12,
+    text: 'Ön uç (front-end) veya arka uç (back-end) geliştirme arasında bir tercihiniz var mı?',
+    trait: 'web',
+    iconName: 'web-check',
+  },
+  {
+    id: 13,
+    text: 'Büyük veri setleriyle çalışmak ve onlardan anlamlı sonuçlar çıkarmak hoşunuza gider mi?',
+    trait: 'dataScience',
+    iconName: 'chart-bar',
+  },
+  {
+    id: 14,
+    text: 'Kodunuzun bellek kullanımını optimize etmek gibi detaylarla uğraşmaktan hoşlanır mısınız?',
+    trait: 'performance',
+    iconName: 'database',
+  },
+  {
+    id: 15,
+    text: 'Basit ve anlaşılır bir söz dizimi (syntax) olan bir dille başlamayı mı tercih edersiniz?',
+    trait: 'beginnerFriendly',
+    iconName: 'format-letter-case',
+  },
 ];
 
 export const TRAIT_LABELS: { [key: string]: string } = {
@@ -234,5 +272,6 @@ export const TRAIT_LABELS: { [key: string]: string } = {
   system: 'Sistem Programlama',
   embedded: 'Gömülü Sistemler',
   enterprise: 'Kurumsal Çözümler',
+  community: 'Topluluk Desteği',
 };
 

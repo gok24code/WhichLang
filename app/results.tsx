@@ -12,8 +12,8 @@ const languageColors: { [key: string]: string[] } = {
   java: ["#FF4500", "#FF6347"],
   csharp: ["#BA55D3", "#9370DB"],
   go: ["#3CB371", "#2E8B57"],
-  rust: ["#FF00FF", "#FF00FF"],
-  cpp: ["#ff0000", "#ff4500"],
+  rust: ["#000000", "#FF4500"],
+  cpp: ["#0000FF", "#8A2BE2"],
 };
 
 // Card component for each language result
@@ -21,12 +21,12 @@ const LanguageCard = ({ langId, score }: { langId: string; score: number }) => {
   const language = LANGUAGES.find((lang) => lang.id === langId);
   if (!language) return null;
 
-  const gradientColors = languageColors[language.id] || ["#A1FFCE", "#FAFFD1"];
+  const gradientColors: [string, string] = languageColors[language.id] || ["#000000", "#434343"];
 
   return (
     <View style={styles.card}>
       <LinearGradient
-        colors={gradientColors as [string, string, ...string[]]}
+        colors={gradientColors}
         style={styles.cardHeader}
       >
         <Text style={styles.langName}>{language.name}</Text>
@@ -48,17 +48,22 @@ const LanguageCard = ({ langId, score }: { langId: string; score: number }) => {
 const ResultsScreen = () => {
   const router = useRouter();
   const { results } = useLocalSearchParams<{ results: string }>();
-  const topResults: { langId: string; score: number }[] = results
+  const parsedResults: { langId: string; score: number }[] = results
     ? JSON.parse(results)
     : [];
 
-  if (topResults.length === 0) {
+  // Filter out languages with 0% score
+  const filteredResults = parsedResults.filter(result => result.score > 0);
+
+  if (filteredResults.length === 0) {
     return (
       <View style={styles.container}>
-        <Text style={styles.errorText}>Sonuç bulunamadı!</Text>
+        <Text style={styles.errorText}>Hiç eşleşme bulunamadı! Belki tekrar denemek istersiniz?</Text>
       </View>
     );
   }
+
+  const titleText = `İşte Senin İçin En İyi ${filteredResults.length} Eşleşme:`;
 
   return (
     <LinearGradient colors={["#1E1E1E", "#121212"]} style={styles.container}>
@@ -70,8 +75,8 @@ const ResultsScreen = () => {
         }}
       />
       <ScrollView contentContainerStyle={styles.scrollContent}>
-        <Text style={styles.title}>İşte Senin İçin En İyi 3 Eşleşme:</Text>
-        {topResults.map((result) => (
+        <Text style={styles.title}>{titleText}</Text>
+        {filteredResults.map((result) => (
           <LanguageCard
             key={result.langId}
             langId={result.langId}
