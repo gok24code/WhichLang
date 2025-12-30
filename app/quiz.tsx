@@ -233,7 +233,11 @@ const QuizScreen = () => {
               onSwipedLeft={(index) => handleSwipe(index, 'left')}
               onSwipedRight={(index) => handleSwipe(index, 'right')}
               onSwipedTop={(index) => handleSwipe(index, 'star')}
-              onSwiped={() => setCardIndex(prev => prev + 1)}
+              onSwiped={() => {
+                pan.setValue({ x: 0, y: 0 });
+                hapticDirection.current = null;
+                setCardIndex(prev => prev + 1);
+              }}
               onSwipedAll={onSwipedAll}
               onSwiping={(x, y) => {
                 pan.setValue({ x, y });
