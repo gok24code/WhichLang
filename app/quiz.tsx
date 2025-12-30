@@ -213,10 +213,10 @@ const QuizScreen = () => {
       {!quizFinished ? (
         <>
           <Animated.View style={[styles.glow, styles.leftGlow, { opacity: leftGlowOpacity }]}>
-            <LinearGradient colors={['rgba(229, 86, 109, 0.5)', 'transparent']} style={styles.glowGradient} start={{ x: 1, y: 0 }} end={{ x: 0, y: 0 }} />
+            <LinearGradient colors={['rgba(229, 86, 109, 0.5)', 'transparent']} style={styles.glowGradient} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} />
           </Animated.View>
           <Animated.View style={[styles.glow, styles.rightGlow, { opacity: rightGlowOpacity }]}>
-            <LinearGradient colors={['rgba(77, 237, 196, 0.5)', 'transparent']} style={styles.glowGradient} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}/>
+            <LinearGradient colors={['rgba(77, 237, 196, 0.5)', 'transparent']} style={styles.glowGradient} start={{ x: 1, y: 0 }} end={{ x: 0, y: 0 }}/>
           </Animated.View>
 
           <Animated.View style={[styles.swiperContainer, animatedSwiperStyle]}>
